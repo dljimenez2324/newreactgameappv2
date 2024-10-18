@@ -29,7 +29,7 @@ const GameGrid = ({gameQuery}:Props) => {
    // and now we simply use our custom hook useGames() hook
    const {data, error, isLoading} = useGames(gameQuery);
 
-    const skeleton = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,1,18,19,20];
+    const skeleton = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
     // we may have other helper functions to add, delete or update data
   return (
     <>
@@ -47,7 +47,7 @@ const GameGrid = ({gameQuery}:Props) => {
             </GameCardContainer>
             
             )}
-            {data.map(game => 
+            {data?.results.map(game => 
             <GameCardContainer key={game.id}>
               <GameCard game={game} >{}</GameCard>
             </GameCardContainer>
@@ -56,7 +56,7 @@ const GameGrid = ({gameQuery}:Props) => {
         </SimpleGrid>
 
         {/* render errors */}
-        {error && <Text color={"red"}>{error}</Text>}
+        {error && <Text color={"red"}>{error.message}</Text>}
     </>
   )
 }
