@@ -3,7 +3,10 @@
 // import { CanceledError } from "axios";
 // import { Platform } from "./useGames";
 
+import { useQuery } from "@tanstack/react-query";
 import useData from "./useData";
+import { CACHE_KEY_GENRES } from "../constants";
+import apiClient from "../services/apiClient";
 
 
 // export interface Genre {
@@ -22,13 +25,19 @@ export interface Genre {
 //   metacritic: number
 }
 
-export interface FetchGenresResponse {
+export interface FetchGenresResponse <T> {
   count: number;
-  results: Genre[];
+  results: T[];
 }
 
 
-const useGenres = () => useData<Genre>('/genres')
+const useGenres = () => useQuery({
+  queryKey: CACHE_KEY_GENRES,
+  queryFn: () => 
+                apiClient
+                    .get<FetchGenresResponse<Genre>>('/genres')
+                    .then(res => res.data)
+})
 
 export default useGenres;
 

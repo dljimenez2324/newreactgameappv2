@@ -27,7 +27,7 @@ const GenreList = ({onSelectedGenre, selectedGenre}:Props) => {
         <List paddingBottom={5}>
                 {isLoading && <Spinner/>}
 
-                {data.map(genre => <ListItem key={genre.id} marginBottom={3}>
+                {data?.map((genre) => <ListItem key={genre.id} marginBottom={3}>
                 
                     <HStack>
                         <Image objectFit={'cover'} boxSize={16} borderRadius={4} src={getCroppedImageUrl(genre.image_background)}/>
