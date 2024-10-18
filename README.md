@@ -1,4 +1,4 @@
-#MiniChallenge 15: Fetch Games
+# MiniChallenge 15: Fetch Games
 Name: David Jimenez
 Project: MC 15 Fetch Games
 Date: 10/17/2024
@@ -17,7 +17,7 @@ Go to your useGame hook and replace the useData hook with useQuery to fetch the 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# React + TypeScript + Vite
+// # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
