@@ -2,11 +2,12 @@
 // import apiClient from "../services/apiClient";
 // import { CanceledError } from "axios";
 // import { Platform } from "./useGames";
+// import useData from "./useData";
+// import apiClient from "../services/apiClient";
 
 import { useQuery } from "@tanstack/react-query";
-import useData from "./useData";
 import { CACHE_KEY_GENRES } from "../constants";
-import apiClient from "../services/apiClient";
+import APIClient, { FetchResponse } from "../services/apiClient";
 
 
 // export interface Genre {
@@ -14,29 +15,27 @@ import apiClient from "../services/apiClient";
 //   name: string;
 // }
 
+const apiClient = new APIClient<Genre>('/genres');
 
 //help us shaping our data in the form of our interfaces(type) props to pass data from parent component to child
 export interface Genre {
   id: number;
   name: string;
   image_background: string;
-//   background_image: string
-//   parent_platforms: { platform: Platform }[]
-//   metacritic: number
+
 }
 
-export interface FetchGenresResponse <T> {
-  count: number;
-  results: T[];
-}
+// export interface FetchGenresResponse <T> {
+//   count: number;
+//   results: T[];
+// }
 
 
-const useGenres = () => useQuery({
+const useGenres = () => useQuery<FetchResponse<Genre>>({
   queryKey: CACHE_KEY_GENRES,
   queryFn: () => 
-                apiClient
-                    .get<FetchGenresResponse<Genre>>('/genres')
-                    .then(res => res.data)
+              apiClient.getall({}),
+  staleTime: 24 * 60 * 60 * 1000 // 24 hours before refresh
 })
 
 export default useGenres;
