@@ -4,7 +4,7 @@
 // import apiClient from "../services/apiClient"
 // import { Genre } from "../hooks/useGenres"
 // import { Platform } from "../hooks/usePlatforms"
-import { Button, Center, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
