@@ -16,7 +16,7 @@ import ms from "ms";
 //   name: string;
 // }
 
-const apiClient = new APIClient<Genre>('/genres');
+const apiClient = new APIClient('/genres');
 
 //help us shaping our data in the form of our interfaces(type) props to pass data from parent component to child
 export interface Genre {

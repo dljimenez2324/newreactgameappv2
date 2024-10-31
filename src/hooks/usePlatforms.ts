@@ -5,7 +5,7 @@ import { CACHE_KEY_PLATFORMS } from "../constants";
 import APIClient, { FetchResponse } from "../services/apiClient";
 import ms from "ms";
 
-const apiClient = new APIClient<Platform>('/platforms/lists/parents');
+const apiClient = new APIClient('/platforms/lists/parents');
 
 export interface Platform {
     id: number

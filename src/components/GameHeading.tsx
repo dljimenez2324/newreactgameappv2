@@ -1,15 +1,13 @@
 import { Heading } from "@chakra-ui/react"
-import { GameQuery } from "../App"
-import useGenres from "../hooks/useGenres"
-// import usePlatforms from "../hooks/usePlatforms"
 import usePlatform from "../hooks/usePlatform"
 import useGenre from "../hooks/useGenre"
+import useGameQueryStore from "../store"
 
-interface Props {
-    gameQuery: GameQuery
-}
+// interface Props {
+//     gameQuery: GameQuery
+// }
 
-const GameHeading = ({gameQuery}:Props) => {
+const GameHeading = () => {
 
     //// moved to useGenre
     // const {data: genres} = useGenres();
@@ -19,11 +17,13 @@ const GameHeading = ({gameQuery}:Props) => {
     // const { data: platforms} = usePlatforms();
     // const platform = platforms?.results.find((p) => p.id === gameQuery.platformId)
 
+    const genreId = useGameQueryStore(s => s.gameQuery.genreId);
     // now using our new hook useGenre
-    const genre = useGenre(gameQuery.genreId)
-
+    const genre = useGenre(genreId)
+    
+    const platformId = useGameQueryStore(s => s.gameQuery.platformId);
     // now we need to call and save the return of usePlatform hook
-    const platform = usePlatform(gameQuery.genreId)
+    const platform = usePlatform(platformId)
 
     // store a variable to hold this
     const heading=`${platform?.name  || '' } ${genre?.name || '' } Games`

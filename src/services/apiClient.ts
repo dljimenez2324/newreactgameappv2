@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
     }
 })
 
-class APIClient<T> {
+class APIClient {
     endpoint: string;
 
     constructor(endpoint:string) {

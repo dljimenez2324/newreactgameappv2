@@ -1,15 +1,9 @@
-// all of our imports we need
 
-// import { useEffect, useState } from "react"
-// import apiClient from "../services/apiClient"
-// import { Genre } from "../hooks/useGenres"
-// import { Platform } from "../hooks/usePlatforms"
 import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import { GameQuery } from "../App";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -19,14 +13,14 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 // props to pass data from parent component to child component
 
-interface Props {
-  //refactored
-  // selectedGenre: Genre | null;
-  // selectedPlatform: Platform | null;
-  gameQuery: GameQuery;
-}
+// interface Props {
+//   //refactored
+//   // selectedGenre: Genre | null;
+//   // selectedPlatform: Platform | null;
+//   gameQuery: GameQuery;
+// }
 
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGrid = () => {
   // we have cut the usestate , our fetch, and useEffect and place them into our custom hook
   // and now we simply use our custom hook useGames() hook
   const {
@@ -36,7 +30,7 @@ const GameGrid = ({ gameQuery }: Props) => {
     // isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
 
   const skeleton = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
