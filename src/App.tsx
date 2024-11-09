@@ -1,10 +1,4 @@
-import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
-import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
-import GameHeading from "./components/GameHeading";
+
 
 // REFACTORED
 // undefined is absense of value   but null is an intentinal absense of value
@@ -30,37 +24,7 @@ const App = () => {
     <>
       {/* create our responsive layout with Charkha UI Grid */}
       {/* Nav, aside, main ______ responsive for desktop and mobile */}
-      <Grid
-        templateAreas={{
-          base: `'nav' 'main'`,
-          lg: `'nav nav' 'aside main'`, //992
-        }}
-      >
-        <GridItem area="nav" bg="">
-          {/* <NavBar onSearch={searchText => setGameQuery({...gameQuery, searchText})}/> */}
-          <NavBar />
-        </GridItem>
-
-        <Show above="lg">
-          <GridItem area="aside" padding={1.5}>
-            {" "}
-            {/* <GenreList selectedGenreId={gameQuery.genreId} onSelectedGenre={(genre) => setGameQuery({...gameQuery, genreId: genre.id})}/> */}
-            <GenreList />
-          </GridItem>
-        </Show>
-
-        <GridItem area="main">
-          <Box padding={5}>
-            <GameHeading />
-            <HStack spacing={5} marginY={5}>
-              <PlatformSelector />
-              <SortSelector/>
-            </HStack>
-          </Box>
-          {/* refactored below */}
-          <GameGrid/>
-        </GridItem>
-      </Grid>
+      {/* all of the Grid was moved to HomePage.tsx */}
     </>
   );
 };

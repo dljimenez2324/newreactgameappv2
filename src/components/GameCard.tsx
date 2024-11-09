@@ -4,6 +4,8 @@ import { Game } from "../hooks/useGames"
 import PlatformIconsList from "./PlatformIconsList"
 import CriticScore from "./CriticScore"
 import getCroppedImageUrl from "../services/imageUrl"
+import { Link } from "react-router-dom"
+import Emoji from "./Emoji"
 
 
 interface GameProps {
@@ -24,10 +26,17 @@ const GameCard = ({game}:GameProps) => {
                 {/* This below is being moved to the PlatformIconList component */}
                 {/* {game.parent_platforms.map(({platform}) => <Text>{platform.name}</Text>)} */}
                 <HStack>
-                  <PlatformIconsList platforms={game.parent_platforms.map(platform => platform.platform)}/>
+                  <PlatformIconsList platforms={game.parent_platforms?.map(platform => platform.platform)}/>
                   <CriticScore score={game.metacritic}/>
                 </HStack>
-                <Heading fontSize={'2xl'}>{game.name}</Heading>
+                <Heading fontSize={'2xl'}>
+                  <Link to={'/games/' + game.slug}>
+                  {game.name}
+                  </Link>
+
+                  <Emoji rating={game.rating_top}/>
+
+                </Heading>
 
             </CardBody>
         </Card>
