@@ -6,7 +6,7 @@ import GameHeading from "../components/GameHeading";
 import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
-import { error } from "console";
+// import { error } from "console";
 
 const HomePage = () => {
     // throw new Error('error');

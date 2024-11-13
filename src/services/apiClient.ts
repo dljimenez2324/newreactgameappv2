@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
     }
 })
 
-class APIClient {
+class APIClient<T> {
     endpoint: string;
 
     constructor(endpoint:string) {
@@ -24,6 +24,11 @@ class APIClient {
         return axiosInstance
                 .get(this.endpoint, config)
                 .then(res => res.data)
+    }
+
+    // fetch a game by the slug
+    get = (id: number | string) => {
+        return axiosInstance.get<T>(this.endpoint + '/' + id).then(res => res.data)
     }
 
     // we can add a put
