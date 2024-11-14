@@ -2,6 +2,7 @@ import { HStack, Image } from "@chakra-ui/react"
 import logo from '../assets/logo.webp'
 import ColorModeSwitch from "./ColorModeSwitch"
 import SearchInput from "./SearchInput"
+import { Link } from "react-router-dom"
 
 //// for global statemenagement we delete the interface and props
 // interface Props {
@@ -12,7 +13,11 @@ const NavBar = () => {
   return (
     <>
         <HStack>
-            <Image src={logo} boxSize={12}/>
+            <Link to={'/'}>
+              <Image src={logo} objectFit={'cover'} boxSize={14}/>
+            </Link>
+          
+
             {/* <SearchInput onSearch={onSearch}/> */}
             <SearchInput/>
             <ColorModeSwitch/>
