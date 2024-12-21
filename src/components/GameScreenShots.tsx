@@ -1,5 +1,6 @@
 import { SimpleGrid, Spinner, Image } from "@chakra-ui/react";
 import useScreenShots from "../hooks/useScreenShots";
+import { Key } from "react";
 // import { ScreenShots } from "../entities/ScreenShots";
 
 interface Props {
@@ -21,7 +22,7 @@ const GameScreenShots = ({gameId}:Props) => {
     <>
         <SimpleGrid columns={{base: 1, md: 2}} spacing={4}>
             {/* {data?.results.map(file => <Image key={file.id} src={file.image} />)} */}
-            {data?.results.map(file => <Image key={file.id} src={file.image}/>)}
+            {data?.results.map((file: { id: Key | null | undefined; image: string | undefined; }) => <Image key={file.id} src={file.image}/>)}
         </SimpleGrid>
     </>
   )
